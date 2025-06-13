@@ -23,6 +23,7 @@ import {
   GitBranch
 } from 'lucide-react';
 import Image from 'next/image';
+import HeroSection from '@/components/HeroSection';
 export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -56,7 +57,7 @@ export default function Portfolio() {
     'AWS Cloud Practitioner Essential Certification',
     'Solved 80+ Questions on LeetCode',
     'Top 10 in Hack-o-Holic 3.0 Hackathon (100+ teams) Graphic Era Hill University',
-    'Cleared two rounds of TCS CodeVita Season 12 (350,000 participants)'
+
   ];
 
   useEffect(() => {
@@ -108,9 +109,9 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-zinc-900 text-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-black/80 backdrop-blur-md border-b border-gray-800 z-50">
+      <nav className="fixed top-0 w-full bg-zinc-900/80 backdrop-blur-md border-b border-zinc-950 z-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="text-sm text-gray-400">{currentTime}</div>
@@ -168,53 +169,7 @@ export default function Portfolio() {
 
       {/* Hero Section */}
       <section id="home" className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div>
-                <p className="text-gray-400 text-lg mb-4">Hi! My Name is</p>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6">
-                  Ujjwal
-                </h1>
-                <p className="text-gray-300 text-lg leading-relaxed max-w-2xl">
-                  Seeking a Software Engineering internship to leverage skills in Web Development, 
-                  specifically in TypeScript, Python, React.js, Node.js, PostgreSQL, and MongoDB, 
-                  while gaining hands-on experience and contributing to innovative projects.
-                </p>
-              </div>
-
-              {/* Social Links */}
-              <div className="flex items-center space-x-6">
-                <button 
-                  onClick={() => window.open('https://github.com/UjjwalSharma0112', '_blank')}
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <Github size={24} />
-                </button>
-             
-                <button 
-                  onClick={() => window.open('https://instagram.com/yourusername', '_blank')}
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <Linkedin size={24} />
-                </button>
-                <div
-                  
-                  className="flex gap-2  text-white "
-                >
-                  <Mail size={24}></Mail> ujjwalsharma0810@gmail.com
-                </div>
-              </div>
-            </div>
-
-            {/* Avatar/Image placeholder */}
-            <div className="flex justify-center lg:justify-end">
-              <div className="w-64 h-64 bg-gray-800 rounded-full flex items-center justify-center">
-                <div className="text-6xl">👋</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <HeroSection/>
       </section>
 
       {/* Experience Section */}
@@ -223,7 +178,7 @@ export default function Portfolio() {
           <h2 className="text-3xl font-bold text-white mb-12">Experience</h2>
           
           <div className="space-y-8">
-            <Card className="bg-gray-900 border-gray-800">
+            <Card className="bg-zinc-900 ">
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div>
