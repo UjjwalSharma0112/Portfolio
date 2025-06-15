@@ -1,73 +1,98 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { 
-  Github, 
-  Mail, 
-  MapPin, 
-  Phone, 
-  ExternalLink, 
-  Code2, 
-  Database, 
-  Globe, 
+import { useState, useEffect } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Github,
+  Mail,
+  MapPin,
+  Phone,
+  ExternalLink,
+  Code2,
+  Database,
+  Globe,
   Award,
   Briefcase,
   GraduationCap,
   ChevronDown,
   Menu,
-  X,Linkedin,
+  X,
+  Linkedin,
   Instagram,
-  GitBranch
-} from 'lucide-react';
-import Image from 'next/image';
-import HeroSection from '@/components/HeroSection';
+  GitBranch,
+} from "lucide-react";
+import Image from "next/image";
+import HeroSection from "@/components/HeroSection";
 export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-  const [currentTime, setCurrentTime] = useState('');
+  const [activeSection, setActiveSection] = useState("home");
+  const [currentTime, setCurrentTime] = useState("");
 
   const skills = {
-    languages: ['C++', 'Python', 'TypeScript', 'Java', 'SQL', 'HTML', 'CSS'],
-    frameworks: ['React', 'Next.js', 'Node.js', 'Express.js', 'Docker', 'Linux'],
-    databases: ['MongoDB', 'PostgreSQL', 'SQLite3'],
-    tools: ['Git', 'GitHub', 'AWS', 'Vanilla JS']
+    languages: ["C++", "Python", "TypeScript", "Java", "SQL", "HTML", "CSS"],
+    frameworks: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "Express.js",
+      "Docker",
+      "Linux",
+    ],
+    databases: ["MongoDB", "PostgreSQL", "SQLite3"],
+    tools: ["Git", "GitHub", "AWS", "Vanilla JS"],
   };
 
   const projects = [
     {
-      title: 'RideWise CarPooling Management',
-      tech: ['Node.js', 'React.js', 'SQLite3'],
-      description: 'A smart, map-based carpooling web application that enables users to request rides by selecting pickup and drop-off locations on a live map. Features real-time driver matching and route planning with geospatial data.',
-      github: 'https://github.com/UjjwalSharma0112/RideWise',
-      features: ['Live map integration', 'Real-time driver matching', 'Route optimization', 'Geospatial data processing']
+      title: "RideWise CarPooling Management",
+      tech: ["Node.js", "React.js", "SQLite3"],
+      description:
+        "A smart, map-based carpooling web application that enables users to request rides by selecting pickup and drop-off locations on a live map. Features real-time driver matching and route planning with geospatial data.",
+      github: "https://github.com/UjjwalSharma0112/RideWise",
+      features: [
+        "Live map integration",
+        "Real-time driver matching",
+        "Route optimization",
+        "Geospatial data processing",
+      ],
     },
     {
-      title: 'Cruz-Link Smart Helmet',
-      tech: ['IoT', 'Next.js', 'Gemini API', 'MCP', 'Node.js'],
-      description: 'AI-powered smart helmet with live crash detection using ESP-8266 and gyroscope module. Features Text-To-Speech support and natural language processing with Gemini API integration.',
-      github: 'https://github.com/UjjwalSharma0112/CRUZ-LINK',
-      features: ['Live crash detection', 'AI-powered responses', 'Text-to-Speech', 'Natural language queries']
-    }
+      title: "Cruz-Link Smart Helmet",
+      tech: ["IoT", "Next.js", "Gemini API", "MCP", "Node.js"],
+      description:
+        "AI-powered smart helmet with live crash detection using ESP-8266 and gyroscope module. Features Text-To-Speech support and natural language processing with Gemini API integration.",
+      github: "https://github.com/UjjwalSharma0112/CRUZ-LINK",
+      features: [
+        "Live crash detection",
+        "AI-powered responses",
+        "Text-to-Speech",
+        "Natural language queries",
+      ],
+    },
   ];
 
   const achievements = [
-    'AWS Cloud Practitioner Essential Certification',
-    'Solved 80+ Questions on LeetCode',
-    'Top 10 in Hack-o-Holic 3.0 Hackathon (100+ teams) Graphic Era Hill University',
-
+    "AWS Cloud Practitioner Essential Certification",
+    "Solved 80+ Questions on LeetCode",
+    "Top 10 in Hack-o-Holic 3.0 Hackathon (100+ teams) Graphic Era Hill University",
   ];
 
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
-      const timeString = now.toLocaleString('en-US', {
-        weekday: 'short',
-        hour: '2-digit',
-        minute: '2-digit',
-        timeZone: 'Asia/Kolkata'
+      const timeString = now.toLocaleString("en-US", {
+        weekday: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+        timeZone: "Asia/Kolkata",
       });
       setCurrentTime(`${timeString}, New Delhi, India`);
     };
@@ -79,7 +104,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'experience', 'projects', 'resume'];
+      const sections = ["home", "experience", "projects", "resume"];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -87,8 +112,11 @@ export default function Portfolio() {
         if (element) {
           const offsetTop = element.offsetTop;
           const offsetHeight = element.offsetHeight;
-          
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
             setActiveSection(section);
             break;
           }
@@ -96,14 +124,14 @@ export default function Portfolio() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
     setIsMenuOpen(false);
   };
@@ -115,21 +143,21 @@ export default function Portfolio() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="text-sm text-gray-400">{currentTime}</div>
-            
+
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
               {[
-                { name: 'Home', id: 'home' },
-                { name: 'Projects', id: 'projects' },
-                { name: 'Resume', id: 'resume' }
+                { name: "Home", id: "home" },
+                { name: "Projects", id: "projects" },
+                { name: "Resume", id: "resume" },
               ].map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                    activeSection === item.id 
-                      ? 'bg-gray-800 text-white' 
-                      : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                    activeSection === item.id
+                      ? "bg-gray-800 text-white"
+                      : "text-gray-400 hover:text-white hover:bg-gray-800"
                   }`}
                 >
                   {item.name}
@@ -150,9 +178,9 @@ export default function Portfolio() {
           {isMenuOpen && (
             <div className="md:hidden py-4 space-y-2 border-t border-gray-800">
               {[
-                { name: 'Home', id: 'home' },
-                { name: 'Projects', id: 'projects' },
-                { name: 'Resume', id: 'resume' }
+                { name: "Home", id: "home" },
+                { name: "Projects", id: "projects" },
+                { name: "Resume", id: "resume" },
               ].map((item) => (
                 <button
                   key={item.id}
@@ -168,81 +196,34 @@ export default function Portfolio() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
-        <HeroSection/>
-      </section>
-
-      {/* Experience Section */}
-      <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-12">Experience</h2>
-          
-          <div className="space-y-8">
-            <Card className="bg-zinc-900 ">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div>
-                    <CardTitle className="text-xl text-white">Software Engineer</CardTitle>
-                    <CardDescription className="text-gray-400">TechSprint 48H Hackathon</CardDescription>
-                  </div>
-                  <div className="text-right text-sm text-gray-400">
-                    Dec 2024 - Feb 2025
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-3 text-gray-300">
-                  <p className="flex items-start">
-                    <ChevronDown className="mr-2 mt-1 flex-shrink-0 rotate-[-90deg]" size={16} />
-                    Developed a smart helmet that sends authorities the location of accidents, 
-                    increasing the chances of rider survival.
-                  </p>
-                  <p className="flex items-start">
-                    <ChevronDown className="mr-2 mt-1 flex-shrink-0 rotate-[-90deg]" size={16} />
-                    Implemented hands-free device control using LLM and Model Context Protocol (MCP) 
-                    for users such as quick commerce delivery drivers.
-                  </p>
-                </div>
-                
-                <div className="flex flex-wrap gap-2 pt-4">
-                  {['React', 'NodeJS', 'MongoDB', 'Firebase'].map((tech) => (
-                    <Badge key={tech} variant="secondary" className="bg-gray-800 text-gray-300 border-gray-700">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-                  <div className="pt-10">
-    <Image 
-      src="/static/Cruzline.jpg" 
-      alt="Smart Helmet Project" 
-      width={300}
-      height={300}
-       
-      className="rounded-xl w-full h-64 object-contain"
-    />
-  </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
+      <section
+        id="home"
+        className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center"
+      >
+        <HeroSection />
       </section>
 
       {/* Projects Section */}
       <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-12">Featured Projects</h2>
+          <h2 className="text-3xl font-bold text-white mb-12">
+            Featured Projects
+          </h2>
           <div className="grid lg:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="bg-gray-900 border-gray-800 hover:border-gray-700 transition-colors group">
+              <Card
+                key={index}
+                className="bg-gray-900 border-gray-800 hover:border-gray-700 transition-colors group"
+              >
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <CardTitle className="text-xl text-white group-hover:text-blue-400 transition-colors">
                       {project.title}
                     </CardTitle>
-                    <Button 
-                      variant="ghost" 
+                    <Button
+                      variant="ghost"
                       size="sm"
-                      onClick={() => window.open(project.github, '_blank')}
+                      onClick={() => window.open(project.github, "_blank")}
                       className="text-gray-400 hover:text-white"
                     >
                       <ExternalLink size={16} />
@@ -250,7 +231,11 @@ export default function Portfolio() {
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
-                      <Badge key={tech} variant="outline" className="border-gray-700 text-gray-400">
+                      <Badge
+                        key={tech}
+                        variant="outline"
+                        className="border-gray-700 text-gray-400"
+                      >
                         {tech}
                       </Badge>
                     ))}
@@ -272,10 +257,10 @@ export default function Portfolio() {
                     </ul>
                   </div>
                   <div className="mt-4 pt-4 border-t border-gray-800">
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       size="sm"
-                      onClick={() => window.open(project.github, '_blank')}
+                      onClick={() => window.open(project.github, "_blank")}
                       className="w-full border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white"
                     >
                       <Github size={16} className="mr-2" />
@@ -293,19 +278,27 @@ export default function Portfolio() {
       {/* Skills Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-12">Technical Skills</h2>
+          <h2 className="text-3xl font-bold text-white mb-12">
+            Technical Skills
+          </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="bg-gray-900 border-gray-800">
               <CardHeader className="pb-3">
                 <div className="flex items-center gap-2">
                   <Code2 className="text-blue-500" size={20} />
-                  <CardTitle className="text-lg text-white">Languages</CardTitle>
+                  <CardTitle className="text-lg text-white">
+                    Languages
+                  </CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {skills.languages.map((skill) => (
-                    <Badge key={skill} variant="secondary" className="bg-gray-800 text-gray-300">
+                    <Badge
+                      key={skill}
+                      variant="secondary"
+                      className="bg-gray-800 text-gray-300"
+                    >
                       {skill}
                     </Badge>
                   ))}
@@ -317,13 +310,19 @@ export default function Portfolio() {
               <CardHeader className="pb-3">
                 <div className="flex items-center gap-2">
                   <Globe className="text-green-500" size={20} />
-                  <CardTitle className="text-lg text-white">Frameworks</CardTitle>
+                  <CardTitle className="text-lg text-white">
+                    Frameworks
+                  </CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {skills.frameworks.map((skill) => (
-                    <Badge key={skill} variant="secondary" className="bg-gray-800 text-gray-300">
+                    <Badge
+                      key={skill}
+                      variant="secondary"
+                      className="bg-gray-800 text-gray-300"
+                    >
                       {skill}
                     </Badge>
                   ))}
@@ -335,13 +334,19 @@ export default function Portfolio() {
               <CardHeader className="pb-3">
                 <div className="flex items-center gap-2">
                   <Database className="text-purple-500" size={20} />
-                  <CardTitle className="text-lg text-white">Databases</CardTitle>
+                  <CardTitle className="text-lg text-white">
+                    Databases
+                  </CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {skills.databases.map((skill) => (
-                    <Badge key={skill} variant="secondary" className="bg-gray-800 text-gray-300">
+                    <Badge
+                      key={skill}
+                      variant="secondary"
+                      className="bg-gray-800 text-gray-300"
+                    >
                       {skill}
                     </Badge>
                   ))}
@@ -359,7 +364,11 @@ export default function Portfolio() {
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {skills.tools.map((skill) => (
-                    <Badge key={skill} variant="secondary" className="bg-gray-800 text-gray-300">
+                    <Badge
+                      key={skill}
+                      variant="secondary"
+                      className="bg-gray-800 text-gray-300"
+                    >
                       {skill}
                     </Badge>
                   ))}
@@ -379,8 +388,13 @@ export default function Portfolio() {
               <Card key={index} className="bg-gray-900 border-gray-800">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-3">
-                    <Award className="text-yellow-500 mt-1 flex-shrink-0" size={20} />
-                    <p className="text-gray-300 leading-relaxed">{achievement}</p>
+                    <Award
+                      className="text-yellow-500 mt-1 flex-shrink-0"
+                      size={20}
+                    />
+                    <p className="text-gray-300 leading-relaxed">
+                      {achievement}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -394,13 +408,11 @@ export default function Portfolio() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-white mb-6">Resume</h2>
           <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
-            Download my resume to learn more about my experience, skills, and achievements.
+            Download my resume to learn more about my experience, skills, and
+            achievements.
           </p>
-          
-          <Button 
-            size="lg"
-            className="bg-white text-black hover:bg-gray-200"
-          >
+
+          <Button size="lg" className="bg-white text-black hover:bg-gray-200">
             Download Resume
           </Button>
         </div>
@@ -410,17 +422,16 @@ export default function Portfolio() {
       <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-gray-800">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
-              © 2025 Portfolio.
-            </p>
+            <p className="text-gray-400 text-sm">© 2025 Portfolio.</p>
             <div className="flex items-center space-x-4 mt-4 md:mt-0">
-              <button 
-                onClick={() => window.open('https://github.com/UjjwalSharma0112', '_blank')}
+              <button
+                onClick={() =>
+                  window.open("https://github.com/UjjwalSharma0112", "_blank")
+                }
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 <Github size={20} />
               </button>
-              
             </div>
           </div>
         </div>

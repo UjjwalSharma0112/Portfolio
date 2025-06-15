@@ -9,9 +9,12 @@ export const metadata: Metadata = {
   description: 'Professional portfolio showcasing software engineering projects and skills',
   keywords: 'software engineer, web developer, react, node.js, typescript, portfolio',
   authors: [{ name: 'Software Engineer' }],
-  viewport: 'width=device-width, initial-scale=1',
-};
 
+};
+export const viewport={
+  width:"device-width",
+  initialScale:1,
+}
 export default function RootLayout({
   children,
 }: {

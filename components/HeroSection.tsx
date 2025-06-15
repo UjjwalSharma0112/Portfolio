@@ -9,11 +9,11 @@ export default function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div >
-              <div className="w-full justify-items-start">
+              <div className="w-full flex justify-items-start">
                   <NameAnimation className="text-gray-400 text-lg pr-2  mb-4" text="Hi! My Name is" delayFactor={0.1}/>
               </div>
             
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold  justify-items-start text-white mb-6">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold  flex justify-items-start text-white mb-6">
                   <NameAnimation text="Ujjwal" delayFactor={0.1}/>
               </h1>
               <p className="text-gray-300 text-lg leading-relaxed max-w-2xl">
