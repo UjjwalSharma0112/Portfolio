@@ -1,89 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Badge } from "@/components/ui/badge";
+
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Github,
-  Mail,
-  MapPin,
-  Phone,
-  ExternalLink,
-  Code2,
-  Database,
-  Globe,
-  Award,
-  Briefcase,
-  GraduationCap,
-  ChevronDown,
-  Menu,
-  X,
-  Linkedin,
-  Instagram,
-  GitBranch,
-} from "lucide-react";
-import Image from "next/image";
+import { Github, Menu, X, Linkedin, Instagram, GitBranch } from "lucide-react";
+
 import HeroSection from "@/components/HeroSection";
+import ProjectSection from "@/components/ProjectSection";
+import TechnicalSection from "@/components/TechnicalSection";
+import AchievementSection from "@/components/AchievementSection";
+import ResumeSection from "@/components/ResumeSection";
 export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [currentTime, setCurrentTime] = useState("");
-
-  const skills = {
-    languages: ["C++", "Python", "TypeScript", "Java", "SQL", "HTML", "CSS"],
-    frameworks: [
-      "React",
-      "Next.js",
-      "Node.js",
-      "Express.js",
-      "Docker",
-      "Linux",
-    ],
-    databases: ["MongoDB", "PostgreSQL", "SQLite3"],
-    tools: ["Git", "GitHub", "AWS", "Vanilla JS"],
-  };
-
-  const projects = [
-    {
-      title: "RideWise CarPooling Management",
-      tech: ["Node.js", "React.js", "SQLite3"],
-      description:
-        "A smart, map-based carpooling web application that enables users to request rides by selecting pickup and drop-off locations on a live map. Features real-time driver matching and route planning with geospatial data.",
-      github: "https://github.com/UjjwalSharma0112/RideWise",
-      features: [
-        "Live map integration",
-        "Real-time driver matching",
-        "Route optimization",
-        "Geospatial data processing",
-      ],
-    },
-    {
-      title: "Cruz-Link Smart Helmet",
-      tech: ["IoT", "Next.js", "Gemini API", "MCP", "Node.js"],
-      description:
-        "AI-powered smart helmet with live crash detection using ESP-8266 and gyroscope module. Features Text-To-Speech support and natural language processing with Gemini API integration.",
-      github: "https://github.com/UjjwalSharma0112/CRUZ-LINK",
-      features: [
-        "Live crash detection",
-        "AI-powered responses",
-        "Text-to-Speech",
-        "Natural language queries",
-      ],
-    },
-  ];
-
-  const achievements = [
-    "AWS Cloud Practitioner Essential Certification",
-    "Solved 80+ Questions on LeetCode",
-    "Top 10 in Hack-o-Holic 3.0 Hackathon (100+ teams) Graphic Era Hill University",
-  ];
 
   useEffect(() => {
     const updateTime = () => {
@@ -104,7 +34,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "experience", "projects", "resume"];
+      const sections = ["home", "projects", "resume"];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -156,8 +86,8 @@ export default function Portfolio() {
                   onClick={() => scrollToSection(item.id)}
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                     activeSection === item.id
-                      ? "bg-gray-800 text-white"
-                      : "text-gray-400 hover:text-white hover:bg-gray-800"
+                      ? "bg-zinc-800 text-white"
+                      : "text-gray-400 hover:text-white hover:bg-zinc-800"
                   }`}
                 >
                   {item.name}
@@ -205,217 +135,22 @@ export default function Portfolio() {
 
       {/* Projects Section */}
       <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-12">
-            Featured Projects
-          </h2>
-          <div className="grid lg:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <Card
-                key={index}
-                className="bg-gray-900 border-gray-800 hover:border-gray-700 transition-colors group"
-              >
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <CardTitle className="text-xl text-white group-hover:text-blue-400 transition-colors">
-                      {project.title}
-                    </CardTitle>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => window.open(project.github, "_blank")}
-                      className="text-gray-400 hover:text-white"
-                    >
-                      <ExternalLink size={16} />
-                    </Button>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                      <Badge
-                        key={tech}
-                        variant="outline"
-                        className="border-gray-700 text-gray-400"
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-300 mb-4 leading-relaxed">
-                    {project.description}
-                  </CardDescription>
-                  <div className="space-y-2">
-                    <h4 className="font-medium text-white">Key Features:</h4>
-                    <ul className="text-sm text-gray-400 space-y-1">
-                      {project.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center gap-2">
-                          <div className="w-1 h-1 rounded-full bg-blue-500"></div>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="mt-4 pt-4 border-t border-gray-800">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => window.open(project.github, "_blank")}
-                      className="w-full border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white"
-                    >
-                      <Github size={16} className="mr-2" />
-                      View on GitHub
-                      <ExternalLink size={14} className="ml-2" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
+        <ProjectSection />
       </section>
 
       {/* Skills Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-12">
-            Technical Skills
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="bg-gray-900 border-gray-800">
-              <CardHeader className="pb-3">
-                <div className="flex items-center gap-2">
-                  <Code2 className="text-blue-500" size={20} />
-                  <CardTitle className="text-lg text-white">
-                    Languages
-                  </CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {skills.languages.map((skill) => (
-                    <Badge
-                      key={skill}
-                      variant="secondary"
-                      className="bg-gray-800 text-gray-300"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gray-900 border-gray-800">
-              <CardHeader className="pb-3">
-                <div className="flex items-center gap-2">
-                  <Globe className="text-green-500" size={20} />
-                  <CardTitle className="text-lg text-white">
-                    Frameworks
-                  </CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {skills.frameworks.map((skill) => (
-                    <Badge
-                      key={skill}
-                      variant="secondary"
-                      className="bg-gray-800 text-gray-300"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gray-900 border-gray-800">
-              <CardHeader className="pb-3">
-                <div className="flex items-center gap-2">
-                  <Database className="text-purple-500" size={20} />
-                  <CardTitle className="text-lg text-white">
-                    Databases
-                  </CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {skills.databases.map((skill) => (
-                    <Badge
-                      key={skill}
-                      variant="secondary"
-                      className="bg-gray-800 text-gray-300"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gray-900 border-gray-800">
-              <CardHeader className="pb-3">
-                <div className="flex items-center gap-2">
-                  <Briefcase className="text-orange-500" size={20} />
-                  <CardTitle className="text-lg text-white">Tools</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {skills.tools.map((skill) => (
-                    <Badge
-                      key={skill}
-                      variant="secondary"
-                      className="bg-gray-800 text-gray-300"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
+        <TechnicalSection />
       </section>
 
       {/* Achievements Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-12">Achievements</h2>
-          <div className="grid sm:grid-cols-2 gap-6">
-            {achievements.map((achievement, index) => (
-              <Card key={index} className="bg-gray-900 border-gray-800">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-3">
-                    <Award
-                      className="text-yellow-500 mt-1 flex-shrink-0"
-                      size={20}
-                    />
-                    <p className="text-gray-300 leading-relaxed">
-                      {achievement}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
+        <AchievementSection />
       </section>
 
       {/* Resume Section */}
       <section id="resume" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">Resume</h2>
-          <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
-            Download my resume to learn more about my experience, skills, and
-            achievements.
-          </p>
-
-          <Button size="lg" className="bg-white text-black hover:bg-gray-200">
-            Download Resume
-          </Button>
-        </div>
+        <ResumeSection></ResumeSection>
       </section>
 
       {/* Footer */}
