@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 export default function ResumeSection() {
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "public/static/resume.pdf";
+    link.href = "/static/resume.pdf";
     link.download = "Ujjwal_Resume.pdf";
     document.body.appendChild(link);
     link.click();
