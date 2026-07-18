@@ -9,8 +9,6 @@ import {
 import BadgesList from "./BadgesList";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { FiGithub } from "react-icons/fi";
-import { ExternalLink } from "lucide-react";
 
 export default function ProjectCard({
   title,
@@ -18,31 +16,34 @@ export default function ProjectCard({
   desc,
   features,
   github,
+  live,
 }: ProjectCardContents) {
   return (
-    <Card className="flex flex-col h-full bg-zinc-900 justify-between">
-      <CardHeader>
-        <CardTitle className="text-2xl">{title}</CardTitle>
-        <div className="flex flex-wrap gap-1 mt-2">
+    <Card className="flex flex-col h-full bg-zinc-900/10 border-zinc-900 rounded-lg justify-between hover:border-zinc-800 transition-all duration-350 group shadow-lg">
+      <CardHeader className="space-y-3 pb-3">
+        <CardTitle className="text-xl font-bold text-zinc-150 group-hover:text-white transition-colors">
+          {title}
+        </CardTitle>
+        <div className="flex flex-wrap gap-1">
           <BadgesList
             labels={technologies}
-            className="border-gray-700  text-gray-400"
+            className="border-zinc-900 bg-zinc-950/20 text-zinc-500 hover:text-zinc-300 hover:border-zinc-800 text-[10px]"
           />
         </div>
       </CardHeader>
 
-      <CardContent className="flex-grow flex flex-col">
-        <p className="text-sm text-gray-300 mb-4">{desc}</p>
+      <CardContent className="flex-grow flex flex-col justify-between">
+        <p className="text-sm text-zinc-400 leading-relaxed mb-6">{desc}</p>
 
-        <div className="mt-auto">
-          <h4 className="font-semibold text-white mb-2">Key Features:</h4>
-          <ul className="space-y-1">
+        <div className="mt-auto space-y-2">
+          <h4 className="text-[10px] uppercase tracking-wider text-zinc-500 font-semibold">Key Features</h4>
+          <ul className="space-y-2">
             {features.map((feature) => (
               <li
                 key={feature}
-                className="flex items-start gap-2 text-sm text-gray-300"
+                className="flex items-start gap-2.5 text-xs text-zinc-450 leading-relaxed"
               >
-                <div className="w-2 h-2 mt-1 rounded-full bg-gray-500" />
+                <div className="w-1 h-1 mt-2 rounded-full bg-zinc-700 flex-shrink-0" />
                 <span>{feature}</span>
               </li>
             ))}
@@ -50,14 +51,19 @@ export default function ProjectCard({
         </div>
       </CardContent>
 
-      <CardFooter>
-        <Button asChild className="w-full">
+      <CardFooter className="gap-3 pt-4 border-t border-zinc-900/60 mt-6">
+        <Button asChild variant="outline" className="flex-1 bg-zinc-950/20 border-zinc-900 hover:bg-zinc-900 text-zinc-300 text-xs rounded-md h-9">
           <Link href={github} target="_blank" rel="noopener noreferrer">
-            <FiGithub size={18} className="mr-2" />
-            View On GitHub
-            <ExternalLink size={14} className="ml-2" />
+            Source Code
           </Link>
         </Button>
+        {live && (
+          <Button asChild className="flex-1 bg-zinc-100 text-zinc-900 hover:bg-zinc-200 text-xs rounded-md h-9 font-medium">
+            <Link href={live} target="_blank" rel="noopener noreferrer">
+              Live Demo
+            </Link>
+          </Button>
+        )}
       </CardFooter>
     </Card>
   );

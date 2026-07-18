@@ -6,6 +6,7 @@ export type ProjectCardContents = {
   desc: string;
   features: string[];
   github: string;
+  live?: string;
 };
 
 export type TechnicalContents = {
